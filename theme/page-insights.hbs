@@ -1,11 +1,9 @@
 {{!< default}}
 {{!-- Template: page-insights.hbs
-     Usage: In Ghost admin, create a Page titled "Insights", then under
-     "Template" select "Insights" from the dropdown.
-     Posts tagged "insights" will appear here automatically.
+     Updated with Client Work filter and static Central Auto preview card.
+     No references to any AI agents.
 --}}
 
-{{#post}}
 <main class="site-main">
   <div class="insights-hero">
     <div class="insights-hero-inner">
@@ -15,17 +13,29 @@
   </div>
 
   <div class="insights-wrap">
-
-    {{!-- Filter bar --}}
+    <!-- Filter bar -->
     <div class="insights-filters">
       <button class="ins-tag active" data-filter="all">All</button>
       <button class="ins-tag" data-filter="local-business">Local business</button>
       <button class="ins-tag" data-filter="ai-tools">AI tools</button>
       <button class="ins-tag" data-filter="strategy">Strategy</button>
+      <button class="ins-tag" data-filter="client-work">Client work</button>
     </div>
 
-    {{!-- Post grid pulled from tag: insights --}}
+    <!-- Post grid -->
     <div class="insights-grid" id="insights-grid">
+      <!-- Static Central Auto client work card -->
+      <article class="ins-card client-work-card" data-tags="client-work">
+        <a class="ins-card-link" href="/assets/central-auto.html" target="_blank">
+          <span class="ins-card-tag ins-tag-client-work">Client work</span>
+          <h2 class="ins-card-title">Central Auto — Full digital transformation preview</h2>
+          <p class="ins-card-excerpt">See the complete modern website we built for a regional auto service chain. Real results in lead generation and customer experience.</p>
+          <div class="ins-card-meta">
+            <span class="live-badge">Live Preview</span>
+          </div>
+        </a>
+      </article>
+
       {{#get "posts" filter="tag:insights" limit="12" include="tags"}}
         {{#foreach posts}}
         <article class="ins-card" data-tags="{{#foreach tags}}{{slug}} {{/foreach}}">
@@ -47,125 +57,209 @@
       {{/get}}
     </div>
 
-    {{!-- CTA bar --}}
+    <!-- CTA bar -->
     <div class="insights-cta">
       <div class="insights-cta-inner">
         <p>Want this kind of thinking applied to your business?</p>
-        <a href="/contact" class="insights-cta-btn">Book a free call →</a>
+        <a href="/contact" class="insights-cta-btn">Get Your Free AI Opportunity Report →</a>
       </div>
     </div>
-
   </div>
 </main>
 
 <style>
 .insights-hero {
-  border-bottom: 1px solid #e8e8e8;
-  padding: 3rem 0 2rem;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+  color: white;
+  padding: 5rem 0 3rem;
+  border-bottom: 1px solid #222;
 }
 .insights-hero-inner {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 2rem;
+  text-align: center;
 }
 .insights-title {
-  font-size: 2.4rem;
-  font-weight: 600;
-  margin: 0 0 .5rem;
-  color: #1a1a1a;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
 }
 .insights-subtitle {
-  font-size: 1.05rem;
-  color: #666;
-  margin: 0;
+  font-size: 1.25rem;
+  color: #aaa;
+  max-width: 620px;
+  margin: 0 auto;
 }
 .insights-wrap {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
+  background: #0a0a0a;
+  color: #ddd;
 }
 .insights-filters {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  justify-content: center;
 }
 .ins-tag {
   font-size: 13px;
-  padding: 5px 14px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  border: 1px solid #333;
   background: transparent;
-  color: #555;
+  color: #aaa;
   cursor: pointer;
-  transition: all .15s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.ins-tag:hover { border-color: #999; color: #222; }
-.ins-tag.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.ins-tag:hover {
+  border-color: #0ea5e9;
+  color: #0ea5e9;
+}
+.ins-tag.active {
+  background: #0ea5e9;
+  color: white;
+  border-color: #0ea5e9;
+}
 .insights-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-  margin-bottom: 2.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+  margin-bottom: 4rem;
 }
-.ins-card { border: 1px solid #e8e8e8; border-radius: 10px; background: #fff; transition: border-color .15s; }
-.ins-card:hover { border-color: #bbb; }
-.ins-card-link { display: flex; flex-direction: column; gap: 10px; padding: 1.2rem 1.4rem; text-decoration: none; color: inherit; height: 100%; box-sizing: border-box; }
-.ins-card-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 5px; display: inline-block; width: fit-content; text-transform: uppercase; letter-spacing: .04em; }
-.ins-tag-local-business { background: #e1f5ee; color: #0f6e56; }
-.ins-tag-ai-tools { background: #eeedfe; color: #3c3489; }
-.ins-tag-strategy { background: #faeeda; color: #633806; }
-.ins-tag-insights { background: #f1efe8; color: #5f5e5a; }
-.ins-card-title { font-size: 15px; font-weight: 600; line-height: 1.4; margin: 0; color: #1a1a1a; }
-.ins-card-excerpt { font-size: 13px; color: #666; line-height: 1.5; margin: 0; }
-.ins-card-meta { font-size: 12px; color: #999; display: flex; gap: 12px; margin-top: auto; padding-top: 10px; border-top: 1px solid #f0f0f0; }
-.ins-card.hidden { display: none; }
-.insights-cta {
-  background: #f7f6f3;
-  border-radius: 10px;
-  padding: 1.5rem 2rem;
+.ins-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  height: 100%;
 }
-.insights-cta-inner {
+.ins-card:hover {
+  transform: translateY(-8px);
+  border-color: #0ea5e9;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+.client-work-card {
+  border-color: #22d3ee;
+  background: linear-gradient(145deg, #0f172a, #1e2937);
+}
+.client-work-card:hover {
+  border-color: #67e8f9;
+}
+.ins-card-link {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+.ins-card-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  display: inline-block;
+  width: fit-content;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+.ins-tag-client-work {
+  background: #164e63;
+  color: #67e8f9;
+}
+.ins-card-title {
+  font-size: 1.35rem;
+  line-height: 1.35;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: white;
+}
+.ins-card-excerpt {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #aaa;
+  margin: 0 0 auto;
+}
+.ins-card-meta {
+  font-size: 0.8rem;
+  color: #64748b;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: 12px;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #222;
 }
-.insights-cta p { margin: 0; color: #444; font-size: 15px; }
+.live-badge {
+  background: #164e63;
+  color: #67e8f9;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.insights-cta {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+}
+.insights-cta p {
+  color: #ddd;
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+}
 .insights-cta-btn {
-  font-size: 14px;
-  padding: 8px 20px;
-  border: 1px solid #1a1a1a;
-  border-radius: 6px;
-  color: #1a1a1a;
+  display: inline-block;
+  background: white;
+  color: black;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  font-weight: 600;
   text-decoration: none;
-  white-space: nowrap;
-  transition: all .15s;
+  transition: all 0.2s;
 }
-.insights-cta-btn:hover { background: #1a1a1a; color: #fff; }
+.insights-cta-btn:hover {
+  transform: scale(1.05);
+  background: #0ea5e9;
+  color: white;
+}
+@media (max-width: 768px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 
 <script>
 (function() {
-  var btns = document.querySelectorAll('.insights-filters .ins-tag');
-  var cards = document.querySelectorAll('.ins-card');
-  btns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      btns.forEach(function(b) { b.classList.remove('active'); });
+  const btns = document.querySelectorAll('.insights-filters .ins-tag');
+  const cards = document.querySelectorAll('.ins-card');
+  
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      var filter = btn.dataset.filter;
-      cards.forEach(function(card) {
+      
+      const filter = btn.dataset.filter;
+      
+      cards.forEach(card => {
         if (filter === 'all') {
-          card.classList.remove('hidden');
+          card.style.display = 'block';
         } else {
-          var tags = card.dataset.tags || '';
-          card.classList.toggle('hidden', tags.indexOf(filter) === -1);
+          const tags = card.dataset.tags || '';
+          const shouldShow = tags.includes(filter);
+          card.style.display = shouldShow ? 'block' : 'none';
         }
       });
     });
   });
 })();
 </script>
-
-{{/post}}
