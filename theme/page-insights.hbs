@@ -1,60 +1,171 @@
 {{!< default}}
+{{!-- Template: page-insights.hbs
+     Usage: In Ghost admin, create a Page titled "Insights", then under
+     "Template" select "Insights" from the dropdown.
+     Posts tagged "insights" will appear here automatically.
+--}}
 
-{{!-- Insights Page Template for DanjuTech --}}
-
-<header class="site-header">
-    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-zinc-950/95 backdrop-blur-xl">
-        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-x-3 group">
-                <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-violet-400 rounded-2xl flex items-center justify-center text-zinc-950 font-bold text-2xl leading-none pt-0.5 shadow-inner">D</div>
-                <div class="text-3xl font-semibold tracking-[-2px] text-white group-hover:text-cyan-300 transition-colors">DanjuTech</div>
-            </a>
-            
-            <div class="hidden md:flex items-center gap-x-10 text-sm font-medium">
-                <a href="/insights" class="nav-link text-cyan-300">Insights</a>
-                <a href="/work" class="nav-link text-zinc-400 hover:text-cyan-300 transition-colors">Work</a>
-                <a href="/about" class="nav-link text-zinc-400 hover:text-cyan-300 transition-colors">About</a>
-                <a href="/contact" class="nav-link text-zinc-400 hover:text-cyan-300 transition-colors">Contact</a>
-            </div>
-            
-            <a href="#report" class="px-8 py-3 bg-white hover:bg-cyan-300 text-zinc-900 rounded-3xl font-semibold text-sm tracking-wide transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-xl hover:-translate-y-0.5">
-                GET FREE REPORT
-            </a>
-        </div>
-    </nav>
-</header>
-
-<main class="pt-24 bg-zinc-950 text-white">
-    <div class="max-w-screen-2xl mx-auto px-8 py-16">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-6xl font-semibold tracking-tighter mb-6">Insights</h1>
-            <p class="text-xl text-zinc-400 mb-16">Practical AI ideas that deliver real business results. No hype. Just outcomes.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {{#get "posts" filter="tag:insights" limit="all" include="tags,authors" as |insight_posts|}}
-                {{#foreach insight_posts}}
-                    <div class="glass rounded-3xl overflow-hidden card-hover group">
-                        {{#if feature_image}}
-                        <div class="h-48 bg-cover bg-center relative" style="background-image: url('{{img_url feature_image size=\"m\"}}')">
-                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-zinc-950/80"></div>
-                        </div>
-                        {{/if}}
-                        <div class="p-8">
-                            <div class="flex gap-2 mb-4">
-                                {{#foreach tags}}
-                                <span class="text-xs uppercase tracking-widest px-3 py-1 bg-white/10 rounded-full text-cyan-300">{{name}}</span>
-                                {{/foreach}}
-                            </div>
-                            <h2 class="text-2xl font-semibold leading-tight mb-4 group-hover:text-cyan-300 transition-colors">{{title}}</h2>
-                            <p class="text-zinc-400 line-clamp-3 mb-6">{{excerpt}}</p>
-                            <a href="{{url}}" class="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300">Read more →</a>
-                        </div>
-                    </div>
-                {{/foreach}}
-            {{/get}}
-        </div>
+{{#post}}
+<main class="site-main">
+  <div class="insights-hero">
+    <div class="insights-hero-inner">
+      <h1 class="insights-title">Insights</h1>
+      <p class="insights-subtitle">Practical AI thinking for local businesses — no hype, just what works.</p>
     </div>
+  </div>
+
+  <div class="insights-wrap">
+
+    {{!-- Filter bar --}}
+    <div class="insights-filters">
+      <button class="ins-tag active" data-filter="all">All</button>
+      <button class="ins-tag" data-filter="local-business">Local business</button>
+      <button class="ins-tag" data-filter="ai-tools">AI tools</button>
+      <button class="ins-tag" data-filter="strategy">Strategy</button>
+    </div>
+
+    {{!-- Post grid pulled from tag: insights --}}
+    <div class="insights-grid" id="insights-grid">
+      {{#get "posts" filter="tag:insights" limit="12" include="tags"}}
+        {{#foreach posts}}
+        <article class="ins-card" data-tags="{{#foreach tags}}{{slug}} {{/foreach}}">
+          <a class="ins-card-link" href="{{url}}">
+            {{#primary_tag}}
+            <span class="ins-card-tag ins-tag-{{slug}}">{{name}}</span>
+            {{/primary_tag}}
+            <h2 class="ins-card-title">{{title}}</h2>
+            {{#if custom_excerpt}}
+            <p class="ins-card-excerpt">{{custom_excerpt}}</p>
+            {{/if}}
+            <div class="ins-card-meta">
+              <span>{{reading_time}} min read</span>
+              <span>{{date format="MMM YYYY"}}</span>
+            </div>
+          </a>
+        </article>
+        {{/foreach}}
+      {{/get}}
+    </div>
+
+    {{!-- CTA bar --}}
+    <div class="insights-cta">
+      <div class="insights-cta-inner">
+        <p>Want this kind of thinking applied to your business?</p>
+        <a href="/contact" class="insights-cta-btn">Book a free call →</a>
+      </div>
+    </div>
+
+  </div>
 </main>
 
-{{> footer}}
+<style>
+.insights-hero {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 3rem 0 2rem;
+}
+.insights-hero-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.insights-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin: 0 0 .5rem;
+  color: #1a1a1a;
+}
+.insights-subtitle {
+  font-size: 1.05rem;
+  color: #666;
+  margin: 0;
+}
+.insights-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.insights-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.ins-tag {
+  font-size: 13px;
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+  transition: all .15s;
+}
+.ins-tag:hover { border-color: #999; color: #222; }
+.ins-tag.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 2.5rem;
+}
+.ins-card { border: 1px solid #e8e8e8; border-radius: 10px; background: #fff; transition: border-color .15s; }
+.ins-card:hover { border-color: #bbb; }
+.ins-card-link { display: flex; flex-direction: column; gap: 10px; padding: 1.2rem 1.4rem; text-decoration: none; color: inherit; height: 100%; box-sizing: border-box; }
+.ins-card-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 5px; display: inline-block; width: fit-content; text-transform: uppercase; letter-spacing: .04em; }
+.ins-tag-local-business { background: #e1f5ee; color: #0f6e56; }
+.ins-tag-ai-tools { background: #eeedfe; color: #3c3489; }
+.ins-tag-strategy { background: #faeeda; color: #633806; }
+.ins-tag-insights { background: #f1efe8; color: #5f5e5a; }
+.ins-card-title { font-size: 15px; font-weight: 600; line-height: 1.4; margin: 0; color: #1a1a1a; }
+.ins-card-excerpt { font-size: 13px; color: #666; line-height: 1.5; margin: 0; }
+.ins-card-meta { font-size: 12px; color: #999; display: flex; gap: 12px; margin-top: auto; padding-top: 10px; border-top: 1px solid #f0f0f0; }
+.ins-card.hidden { display: none; }
+.insights-cta {
+  background: #f7f6f3;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+}
+.insights-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.insights-cta p { margin: 0; color: #444; font-size: 15px; }
+.insights-cta-btn {
+  font-size: 14px;
+  padding: 8px 20px;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  color: #1a1a1a;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all .15s;
+}
+.insights-cta-btn:hover { background: #1a1a1a; color: #fff; }
+</style>
+
+<script>
+(function() {
+  var btns = document.querySelectorAll('.insights-filters .ins-tag');
+  var cards = document.querySelectorAll('.ins-card');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var filter = btn.dataset.filter;
+      cards.forEach(function(card) {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+        } else {
+          var tags = card.dataset.tags || '';
+          card.classList.toggle('hidden', tags.indexOf(filter) === -1);
+        }
+      });
+    });
+  });
+})();
+</script>
+
+{{/post}}
