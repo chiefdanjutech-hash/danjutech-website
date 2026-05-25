@@ -1,0 +1,316 @@
+{{!< default}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DanjuTech — Enterprise AI Architecture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --primary: 165 243 252;
+        }
+        
+        .glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+        }
+        
+        .hero-bg {
+            background: radial-gradient(at center bottom, #0a0a0a, #1a1a2e, #16213e);
+        }
+        
+        .nav-link {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover {
+            color: rgb(165 243 252);
+            transform: translateY(-1px);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+        
+        .terminal {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur-lg">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-7 h-7 bg-cyan-400 rounded-xl flex items-center justify-center text-zinc-950 font-bold text-xl leading-none pt-0.5">D</div>
+                <div class="text-2xl font-semibold tracking-tighter">DanjuTech</div>
+            </div>
+            
+            <div class="flex items-center gap-x-10 text-sm font-medium">
+                <a href="#" class="nav-link text-zinc-400 hover:text-white">Work</a>
+                <a href="#" class="nav-link text-zinc-400 hover:text-white">Insights</a>
+                <a href="#" class="nav-link text-zinc-400 hover:text-white">About</a>
+                <a href="#" class="nav-link text-zinc-400 hover:text-white">Contact</a>
+            </div>
+            
+            <a href="#assessment" 
+               class="px-6 py-2.5 bg-white text-zinc-900 rounded-2xl font-semibold text-sm hover:bg-cyan-300 transition-colors">
+                Book Assessment
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-bg min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#22d3ee_0.8px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-3xl border border-cyan-500/30 text-cyan-400 text-sm font-medium">
+                    <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                    NOW ACCEPTING 2026 CLIENTS
+                </div>
+                
+                <h1 class="text-7xl leading-[1.05] font-semibold tracking-tighter">
+                    Real results from AI.<br>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-violet-300">Fast. Practical. No hype.</span>
+                </h1>
+                
+                <p class="text-2xl text-zinc-400 max-w-lg">
+                    Your business is busy. Margins are tight. Good people are hard to keep. DanjuTech finds practical AI opportunities that deliver more customers, more revenue, less wasted time — real results you can see in weeks, not years.
+                </p>
+                
+                <div class="flex items-center gap-4">
+                    <a href="#assessment" 
+                       class="px-10 py-4 bg-white hover:bg-cyan-300 transition-all text-zinc-950 rounded-3xl font-semibold text-lg inline-flex items-center gap-3 group">
+                        Book AI Assessment
+                        <span class="text-xl group-hover:translate-x-1 transition">→</span>
+                    </a>
+                    
+                    <a href="#" 
+                       class="px-8 py-4 border border-white/30 hover:border-white/60 rounded-3xl font-medium transition">
+                        View recent work →
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 text-sm pt-6">
+                    <div class="flex items-center gap-2">
+                        <div class="flex -space-x-2">
+                            <div class="w-6 h-6 bg-zinc-700 rounded-full border-2 border-zinc-900 flex items-center justify-center text-[10px]">S</div>
+                            <div class="w-6 h-6 bg-violet-500 rounded-full border-2 border-zinc-900"></div>
+                        </div>
+                        <div>
+                            <div class="font-medium">Built for those who demand more from AI</div>
+                            <div class="text-zinc-500 text-xs">Systems that scale</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Terminal Preview -->
+            <div class="relative">
+                <div class="glass border border-white/10 rounded-3xl p-2 shadow-2xl">
+                    <div class="bg-zinc-900 rounded-2xl p-6 font-mono text-sm terminal border border-white/5">
+                        <div class="flex items-center gap-2 mb-6 text-zinc-500">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <div class="flex-1 text-center text-xs">ai-assessment-engine.ts</div>
+                        </div>
+                        
+                        <div class="space-y-4 text-emerald-400">
+                            <div>&gt; Analyzing business context...</div>
+                            <div class="text-cyan-400">&gt; Identified 14 high-ROI opportunities</div>
+                            <div>&gt; Prioritizing based on implementation effort vs impact...</div>
+                            <div class="text-violet-400">&gt; Recommendation: Autonomous invoice processing + predictive inventory</div>
+                            <div class="pt-4 text-amber-400">Projected 10-month ROI: 340%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Floating badges -->
+                <div class="absolute -top-6 -right-6 glass px-5 py-2.5 rounded-2xl text-sm border border-cyan-400/30 flex items-center gap-2 shadow-xl">
+                    <span class="text-cyan-400">●</span>
+                    <span class="font-medium">Live from production systems</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-12 left-1/2 flex flex-col items-center">
+            <div class="text-xs tracking-[3px] text-zinc-500 mb-3">SCROLL FOR THE FUTURE OF AI CONSULTING</div>
+            <div class="w-px h-12 bg-gradient-to-b from-transparent via-zinc-400 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- Trust Logos -->
+    <div class="border-b border-white/10 py-8">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex justify-between items-center opacity-40">
+                <div class="text-xl font-medium tracking-widest">SANTANDER</div>
+                <div class="text-2xl font-light">VISA</div>
+                <div class="text-xl">Mastercard</div>
+                <div class="text-2xl font-semibold">nvidia</div>
+                <div class="text-lg tracking-wider">ANTHROPIC</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Outcomes -->
+    <section id="assessment" class="max-w-screen-2xl mx-auto px-8 py-28">
+        <div class="flex justify-between items-end mb-16">
+            <div>
+                <div class="uppercase tracking-[2px] text-cyan-400 text-sm font-medium mb-3">HOW WE HELP</div>
+                <h2 class="text-6xl font-semibold tracking-tighter">Real business outcomes from practical AI</h2>
+            </div>
+            <a href="#report" class="text-cyan-400 flex items-center gap-2 group">
+                Get your free report 
+                <span class="text-2xl group-hover:translate-x-1 transition">→</span>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-8">
+            <!-- Outcome 1 -->
+            <div class="glass border border-white/10 rounded-3xl p-10 card-hover group">
+                <div class="text-emerald-400 text-sm font-medium mb-2">MORE CUSTOMERS</div>
+                <div class="text-4xl font-semibold mb-6 text-white">Automated lead generation &amp; personalized marketing</div>
+                <div class="text-zinc-400 leading-relaxed">
+                    Stop relying on walk-ins. AI systems that identify high-value prospects, send perfectly timed offers, and handle initial conversations — while you focus on operations.
+                </div>
+                <div class="mt-10 pt-8 border-t border-white/10 text-xs uppercase tracking-widest text-emerald-400">Typical result: 18–34% increase in revenue within 60 days</div>
+            </div>
+            
+            <!-- Outcome 2 -->
+            <div class="glass border border-cyan-400/60 rounded-3xl p-10 card-hover group relative scale-105 shadow-2xl">
+                <div class="absolute -top-4 right-8 bg-cyan-400 text-zinc-950 text-xs font-bold px-6 py-1 rounded-3xl">MOST REQUESTED</div>
+                <div class="text-emerald-400 text-sm font-medium mb-2">LESS WASTE</div>
+                <div class="text-4xl font-semibold mb-6 text-white">Smart inventory, staffing, and operations automation</div>
+                <div class="text-zinc-400 leading-relaxed">
+                    Predict demand accurately. Reduce overstaffing and food waste. Automate repetitive tasks that currently eat your margins and your time.
+                </div>
+                <div class="mt-10 pt-8 border-t border-white/10 text-xs uppercase tracking-widest text-emerald-400">Typical result: 22–41% reduction in operational costs</div>
+            </div>
+            
+            <!-- Outcome 3 -->
+            <div class="glass border border-white/10 rounded-3xl p-10 card-hover group">
+                <div class="text-emerald-400 text-sm font-medium mb-2">MORE PROFIT</div>
+                <div class="text-4xl font-semibold mb-6 text-white">AI systems that increase throughput without increasing headcount</div>
+                <div class="text-zinc-400 leading-relaxed">
+                    From smarter menu engineering to dynamic pricing and back-of-house optimization. Practical AI that delivers measurable profit improvement fast.
+                </div>
+                <div class="mt-10 pt-8 border-t border-white/10 text-xs uppercase tracking-widest text-emerald-400">Typical result: 27–53% profit lift in first 90 days</div>
+            </div>
+        </div>
+
+        <div class="text-center mt-20">
+            <a href="#report" 
+               class="inline-flex items-center gap-4 px-12 py-6 bg-white text-zinc-900 rounded-3xl font-semibold text-xl hover:bg-cyan-300 transition-all group">
+                Get Your Free AI Opportunity Report
+                <span class="text-3xl group-hover:translate-x-1 transition">→</span>
+            </a>
+            <p class="text-zinc-500 text-sm mt-6">Takes 2 minutes • No sales pitch • Immediate delivery</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="bg-gradient-to-b from-transparent via-cyan-950/30 to-transparent py-24">
+        <div class="max-w-2xl mx-auto text-center px-6">
+            <h2 class="text-5xl font-semibold tracking-tighter mb-6">
+                Ready for systems that actually work?
+            </h2>
+            <p class="text-zinc-400 text-xl mb-10">
+                Limited slots available for Q3 2026. Serious inquiries only.
+            </p>
+            <button onclick="document.getElementById('book-modal').classList.remove('hidden')"
+                    class="px-16 py-8 text-2xl font-semibold bg-white text-black rounded-3xl hover:scale-105 active:scale-95 transition-all">
+                Book Your AI Assessment
+            </button>
+            <p class="text-xs text-zinc-500 mt-8">Average project ROI delivered: 470%</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 py-20">
+        <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-2 gap-y-16">
+            <div>
+                <div class="flex items-center gap-x-3 mb-6">
+                    <div class="w-7 h-7 bg-cyan-400 rounded-2xl flex items-center justify-center text-black font-bold">D</div>
+                    <span class="text-3xl tracking-tighter font-semibold">DanjuTech</span>
+                </div>
+                <p class="max-w-xs text-zinc-400">
+                    Premium AI architecture and autonomous systems.
+                    Built by DanjuTech.
+                </p>
+                <p class="text-xs text-zinc-500 mt-12">
+                    © 2026 DanjuTech. All rights reserved.<br>
+                    Powered by Hermes &amp; Chief
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-8 text-sm">
+                <div>
+                    <div class="font-medium mb-4 text-white">Company</div>
+                    <div class="space-y-3 text-zinc-400">
+                        <div>About</div>
+                        <div>Process</div>
+                        <div>Manifesto</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="font-medium mb-4 text-white">Work</div>
+                    <div class="space-y-3 text-zinc-400">
+                        <div>Case Studies</div>
+                        <div>Agents</div>
+                        <div>Products</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="font-medium mb-4 text-cyan-400">Contact</div>
+                    <div class="space-y-3 text-zinc-300">
+                        <a href="tel:5086540681" class="hover:text-white transition">508.654.0681</a>
+                        <a href="mailto:john.ryan@danjutech.com" class="hover:text-white transition">john.ryan@danjutech.com</a>
+                        <div>Marlborough, MA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Modal -->
+    <div id="book-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-xl z-[100] flex items-center justify-center">
+        <div class="glass max-w-lg w-full mx-4 rounded-3xl p-10 border border-white/20">
+            <h3 class="text-3xl font-semibold mb-8">Let's build something legendary.</h3>
+            <p class="text-zinc-400 mb-8">Tell me about your project or business. The best engagements start with honest conversations.</p>
+            
+            <textarea class="w-full h-32 bg-white/5 border border-white/10 rounded-2xl p-6 text-white placeholder:text-zinc-500" 
+                      placeholder="I'm a founder building..."></textarea>
+            
+            <div class="flex gap-4 mt-8">
+                <button onclick="document.getElementById('book-modal').classList.add('hidden')" 
+                        class="flex-1 py-6 border border-white/30 rounded-2xl">Cancel</button>
+                <button onclick="alert('Request received. John will respond within 24 hours.'); document.getElementById('book-modal').classList.add('hidden')" 
+                        class="flex-1 py-6 bg-white text-black rounded-2xl font-semibold">Send Message</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already loaded via CDN
+        function init() {
+            console.log('%cDanjuTech v2 — Premium AI Architecture', 'color:#67e8f9; font-family:monospace; font-size:10px');
+        }
+        window.onload = init;
+    </script>
+</body>
+</html>
