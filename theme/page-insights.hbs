@@ -1,0 +1,60 @@
+{{!< default}}
+
+{{!-- Insights Page Template for DanjuTech --}}
+
+<header class="site-header">
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-zinc-950/95 backdrop-blur-xl">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-x-3 group">
+                <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-violet-400 rounded-2xl flex items-center justify-center text-zinc-950 font-bold text-2xl leading-none pt-0.5 shadow-inner">D</div>
+                <div class="text-3xl font-semibold tracking-[-2px] text-white group-hover:text-cyan-300 transition-colors">DanjuTech</div>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-x-10 text-sm font-medium">
+                <a href="/insights" class="nav-link text-cyan-300">Insights</a>
+                <a href="/work" class="nav-link text-zinc-400 hover:text-cyan-300 transition-colors">Work</a>
+                <a href="/about" class="nav-link text-zinc-400 hover:text-cyan-300 transition-colors">About</a>
+                <a href="/contact" class="nav-link text-zinc-400 hover:text-cyan-300 transition-colors">Contact</a>
+            </div>
+            
+            <a href="#report" class="px-8 py-3 bg-white hover:bg-cyan-300 text-zinc-900 rounded-3xl font-semibold text-sm tracking-wide transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-xl hover:-translate-y-0.5">
+                GET FREE REPORT
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main class="pt-24 bg-zinc-950 text-white">
+    <div class="max-w-screen-2xl mx-auto px-8 py-16">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-6xl font-semibold tracking-tighter mb-6">Insights</h1>
+            <p class="text-xl text-zinc-400 mb-16">Practical AI ideas that deliver real business results. No hype. Just outcomes.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {{#get "posts" filter="tag:insights" limit="all" include="tags,authors" as |insight_posts|}}
+                {{#foreach insight_posts}}
+                    <div class="glass rounded-3xl overflow-hidden card-hover group">
+                        {{#if feature_image}}
+                        <div class="h-48 bg-cover bg-center relative" style="background-image: url('{{img_url feature_image size=\"m\"}}')">
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-zinc-950/80"></div>
+                        </div>
+                        {{/if}}
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                {{#foreach tags}}
+                                <span class="text-xs uppercase tracking-widest px-3 py-1 bg-white/10 rounded-full text-cyan-300">{{name}}</span>
+                                {{/foreach}}
+                            </div>
+                            <h2 class="text-2xl font-semibold leading-tight mb-4 group-hover:text-cyan-300 transition-colors">{{title}}</h2>
+                            <p class="text-zinc-400 line-clamp-3 mb-6">{{excerpt}}</p>
+                            <a href="{{url}}" class="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300">Read more →</a>
+                        </div>
+                    </div>
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </div>
+</main>
+
+{{> footer}}
