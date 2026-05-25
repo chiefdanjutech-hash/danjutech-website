@@ -1,7 +1,7 @@
 ---
 title: AI Staff Scheduling That Reduced Labor Costs by 22% While Improving Team Happiness
 date: 2026-05-25
-tags: restaurant, operations, staffing
+tags: insights, strategy, ai-tools, operations
 excerpt: Labor is the biggest line item for most restaurants. Here's how practical AI helped one local spot optimize schedules without burning out their team.
 ---
 

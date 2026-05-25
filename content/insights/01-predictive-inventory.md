@@ -1,7 +1,7 @@
 ---
 title: Predictive Inventory That Cut Food Waste by 37% at a Marlborough Bistro
 date: 2026-05-25
-tags: restaurant, quick-wins, operations
+tags: insights, local-business, strategy, operations
 excerpt: How one local restaurant used simple AI forecasting to dramatically reduce spoilage and improve cash flow.
 ---
 

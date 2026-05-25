@@ -1,7 +1,7 @@
 ---
 title: Personalized Marketing That Feels Human – How One Restaurant Increased Repeat Business by 29%
 date: 2026-05-25
-tags: restaurant, marketing, customer-loyalty
+tags: insights, local-business, ai-tools, marketing
 excerpt: AI doesn't have to feel robotic. Here's how one Marlborough restaurant used practical automation to build real customer relationships.
 ---
 
